@@ -1,144 +1,101 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Calendar, Building2, ExternalLink } from "lucide-react";
-import experienceField from "@/assets/experience-field-1.png";
-import experienceOffice from "@/assets/experience-office-1.png";
+import { ArrowUpRight } from "lucide-react";
 
 const experiences = [
   {
-    title: "Software Developer (Full-time)",
-    company: "PT. Farma Global Teknologi (Farmagitech)",
-    location: "Sleman, Yogyakarta, Indonesia",
-    period: "November 2024 – Present",
-    description: [
-      "Developed and optimized healthcare systems including SIMRS and PACS for efficient data and workflow management",
-      "Engineered a document management system (E-Doc) using Vue.js to streamline digital documentation",
-      "Built a PACS system from scratch, covering architecture design, API development, and DICOM image handling",
-      "Improved system performance and reliability through continuous maintenance and troubleshooting",
-      "Worked collaboratively in a team environment to deliver scalable and production-ready solutions",
-    ],
-    image: experienceField,
-    type: "office",
+    title: "Software Developer",
+    company: "PT. Farma Global Teknologi",
+    period: "Nov 2024 — Present",
+    stack: ["Vue.js", "API", "DICOM"],
+    description: "Developed and optimized healthcare systems including SIMRS and PACS. Engineered a document management system (E-Doc) to streamline digital documentation and built a PACS system from scratch.",
+    link: "#"
   },
   {
     title: "Web Developer Intern",
-    company: "PT. Seigan Teknologi Berdikari",
-    location: "Sleman, Yogyakarta, Indonesia",
-    period: "January 2024 – March 2024",
-    description: [
-      "Built and maintained web applications using CodeIgniter",
-      "Implemented and improved system features based on project requirements",
-      "Worked collaboratively in a team to deliver client-oriented solutions",
-      "Enhanced understanding of software development lifecycle in a software house environment",
-    ],
-    image: experienceOffice,
-    type: "office",
+    company: "PT. Seigan Teknologi",
+    period: "Jan 2024 — Mar 2024",
+    stack: ["CodeIgniter", "PHP", "MySQL"],
+    description: "Built and maintained web applications using CodeIgniter. Implemented and improved system features based on project requirements while collaborating in an agile team.",
+    link: "#"
   },
   {
-    title: "Laboratory Assistant (Part-time)",
+    title: "Laboratory Assistant",
     company: "UPN Veteran Yogyakarta",
-    location: "Yogyakarta, Indonesia",
-    period: "August 2022 – July 2024",
-    description: [
-      "Mentored students in programming courses including Algorithms, OOP, Databases, and Computer Networks",
-      "Provided technical guidance and problem-solving support during lab sessions",
-      "Assisted in evaluating and debugging student code and assignments",
-      "Coordinated Object-Oriented Programming lab activities to ensure effective learning delivery",
-    ],
-    image: experienceField,
-    type: "office",
+    period: "Aug 2022 — Jul 2024",
+    stack: ["OOP", "Databases", "Networks"],
+    description: "Mentored students in programming courses including Algorithms, OOP, Databases, and Computer Networks. Provided technical guidance and problem-solving support.",
+    link: "#"
   },
 ];
 
 const Experience = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section id="experience" className="py-24 bg-card/30" ref={ref}>
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="text-primary font-medium">My Journey</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">Work Experience</h2>
-          <div className="w-20 h-1 bg-gradient-primary mx-auto rounded-full" />
-        </motion.div>
+    <section id="experience" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" ref={ref}>
+      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-background/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-foreground">
+          Experience
+        </h2>
+      </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border transform md:-translate-x-1/2" />
-
+      <div>
+        <ol className="group/list">
           {experiences.map((exp, index) => (
-            <motion.div
+            <motion.li
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className={`relative mb-12 md:mb-16 ${
-                index % 2 === 0 ? "md:pr-[50%] md:text-right" : "md:pl-[50%] md:ml-auto"
-              }`}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="mb-12 transition-all hover:opacity-100 group-hover/list:opacity-50"
             >
-              {/* Timeline Dot */}
-              <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-primary rounded-full transform md:-translate-x-1/2 -translate-y-2 glow-primary" />
+              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-50/50 lg:p-4 lg:rounded-xl">
+                
+                {/* Period */}
+                <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:col-span-2">
+                  {exp.period}
+                </header>
 
-              <div
-                className={`ml-8 md:ml-0 ${
-                  index % 2 === 0 ? "md:mr-8" : "md:ml-8"
-                }`}
-              >
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  className="bg-gradient-card border border-border rounded-xl overflow-hidden shadow-card"
-                >
-                  {/* Experience Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={exp.image}
-                      alt={`${exp.title} at ${exp.company}`}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
-                    <span className="absolute bottom-4 left-4 text-sm bg-primary/20 text-primary px-3 py-1 rounded-full border border-primary/30">
-                      {exp.type === "field" ? "Field Work" : "Office Work"}
-                    </span>
-                  </div>
-
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{exp.title}</h3>
-                    
-                    <div className={`flex flex-wrap gap-4 mb-4 text-muted-foreground text-sm ${
-                      index % 2 === 0 ? "md:justify-end" : ""
-                    }`}>
-                      <span className="flex items-center gap-1">
-                        <Building2 className="w-4 h-4" />
-                        {exp.company}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        {exp.period}
-                      </span>
+                {/* Content */}
+                <div className="z-10 sm:col-span-6">
+                  <h3 className="font-medium leading-snug text-foreground">
+                    <div>
+                      <a
+                        className="inline-flex items-baseline font-medium leading-tight text-foreground hover:text-primary focus-visible:text-primary group/link text-base"
+                        href={exp.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${exp.title} at ${exp.company}`}
+                      >
+                        <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
+                        <span>
+                          {exp.title} · <span className="inline-block">{exp.company}</span>
+                          <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 ml-1 translate-y-px" />
+                        </span>
+                      </a>
                     </div>
+                  </h3>
+                  <p className="mt-2 text-sm leading-normal text-muted-foreground">
+                    {exp.description}
+                  </p>
+                  <ul className="mt-4 flex flex-wrap" aria-label="Technologies used">
+                    {exp.stack.map(tech => (
+                      <li key={tech} className="mr-1.5 mt-2">
+                        <div className="flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium leading-5 text-primary">
+                          {tech}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                    <ul className={`space-y-2 ${index % 2 === 0 ? "md:text-left" : ""}`}>
-                      {exp.description.map((item, i) => (
-                        <li key={i} className="text-muted-foreground flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
               </div>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,52 +6,34 @@
 
 @layer base {
   :root {
-    /* Premium Minimalist Dark Theme */
-    --background: 0 0% 5%;
-    --foreground: 0 0% 98%;
+    /* Very clean light slate background */
+    --background: 210 40% 98%; /* slate-50 */
+    --foreground: 222 47% 11%; /* slate-900 */
 
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 5%;
+    /* Teal Primary (like Brittany / Nata) */
+    --primary: 171 77% 35%; /* #138d82 */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 214 32% 91%; /* slate-200 */
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 63%;
+    --muted: 214 32% 91%;
+    --muted-foreground: 215 16% 47%; /* slate-500 */
 
-    --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 171 77% 95%; /* very light teal */
+    --accent-foreground: 171 77% 35%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 0 0% 80%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 171 77% 35%;
 
     --radius: 0.5rem;
-
-    /* Custom tokens - toned down for a premium look */
-    --gradient-primary: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(0 0% 75%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 9%) 0%, hsl(0 0% 6%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(0 0% 7%) 0%, hsl(0 0% 5%) 100%);
-    --glow-primary: 0 0 30px hsl(0 0% 100% / 0.05);
-    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.4);
-    
-    --sidebar-background: 0 0% 7%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 0 0% 98%;
-    --sidebar-primary-foreground: 0 0% 5%;
-    --sidebar-accent: 0 0% 12%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 14%;
-    --sidebar-ring: 0 0% 80%;
   }
 }
 
@@ -65,56 +47,49 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Outfit', sans-serif;
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6, .display-font {
+    font-family: 'Inter', sans-serif;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-primary);
-  }
-
-  .bg-gradient-primary {
-    background-image: var(--gradient-primary);
-  }
-
-  .bg-gradient-card {
-    background-image: var(--gradient-card);
-  }
-
-  .bg-gradient-hero {
-    background-image: var(--gradient-hero);
-  }
-
-  .glow-primary {
-    box-shadow: var(--glow-primary);
-  }
-
-  .shadow-card {
-    box-shadow: var(--shadow-card);
-  }
-
   .glass {
-    @apply backdrop-blur-md bg-card/50 border border-border/50;
+    @apply backdrop-blur-xl bg-white/70 border border-slate-200 shadow-sm;
+  }
+  
+  .glass-card {
+    @apply bg-white border border-slate-100 hover:shadow-lg transition-all duration-300 rounded-2xl;
+  }
+
+  .nav-indicator {
+    @apply transition-all duration-300 w-8 h-px bg-slate-300 mr-4 group-hover:w-16 group-hover:bg-primary group-focus-visible:w-16 group-focus-visible:bg-primary;
+  }
+
+  .nav-indicator-active {
+    @apply w-16 bg-primary;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(19, 141, 130, 0.3);
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
-  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-background;
+  @apply bg-slate-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-muted rounded-full;
+  @apply bg-slate-300 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-muted-foreground/50;
+  @apply bg-slate-400;
 }
