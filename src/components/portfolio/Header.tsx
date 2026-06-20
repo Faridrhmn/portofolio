@@ -5,6 +5,7 @@ import { Linkedin, Github, Mail } from "lucide-react";
 export const navLinks = [
   { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
   { name: "Contact", href: "#contact" },
 ];
@@ -18,6 +19,12 @@ const Header = () => {
         id: link.href,
         element: document.querySelector(link.href),
       }));
+
+      const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+      if (isAtBottom) {
+        setActiveSection(navLinks[navLinks.length - 1].href);
+        return;
+      }
 
       const currentSection = sections.find((section) => {
         if (!section.element) return false;
