@@ -42,7 +42,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24">
+    <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:py-24">
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -88,7 +88,7 @@ const Header = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="mt-8 flex items-center gap-5 lg:mt-0"
+        className="mt-8 flex items-center gap-5"
       >
         <li>
           <a href="https://github.com/faridrhmn" className="text-muted-foreground hover:text-foreground transition-colors" target="_blank" rel="noreferrer">
