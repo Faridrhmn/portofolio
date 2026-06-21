@@ -13,10 +13,10 @@ const projects = [
   },
   {
     title: "Javanese Script Image Detection System",
-    description: "Another brief description for a different project. It should be engaging and concise.",
+    description: "A Python (Flask)-based web application for Javanese script recognition that uses the Freeman Chain Code (FCC) feature extraction method and the Support Vector Machine (SVM) machine learning algorithm.",
     image: "https://placehold.co/600x400/png",
     link: "https://bachelor-thesis.faridrhmn.my.id/",
-    stack: ["Vue", "Express", "MongoDB"]
+    stack: ["Python", "Flask", "SVM", "FCC", "HTML/CSS", "JavaScript", " Bootstrap"]
   }
 ];
 
