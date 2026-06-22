@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Github, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profilePic from "@/assets/profile-placeholder.png";
+import profilePic from "../../assets/profile-photo.png";
 
 export const navLinks = [
   { name: "About", href: "#about" },
@@ -51,9 +51,9 @@ const Header = () => {
         transition={{ duration: 0.8 }}
       >
         <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-          <img 
-            src={profilePic} 
-            alt="Bahruddin Farid" 
+          <img
+            src={profilePic}
+            alt="Bahruddin Farid"
             className="w-32 h-32 sm:w-36 sm:h-36 rounded-3xl object-cover border-4 border-muted/50 shadow-lg shrink-0"
           />
           <div>
@@ -65,7 +65,7 @@ const Header = () => {
             </h2>
           </div>
         </div>
-        
+
         <p className="mt-6 max-w-xs leading-normal text-muted-foreground">
           I build scalable, modern web applications with a focus on elegant code and user experience.
         </p>
@@ -77,14 +77,12 @@ const Header = () => {
               <li key={link.name}>
                 <a
                   href={link.href}
-                  className={`group flex items-center py-3 ${
-                    activeSection === link.href ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                  }`}
+                  className={`group flex items-center py-3 ${activeSection === link.href ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                    }`}
                 >
                   <span
-                    className={`nav-indicator ${
-                      activeSection === link.href ? "nav-indicator-active" : ""
-                    }`}
+                    className={`nav-indicator ${activeSection === link.href ? "nav-indicator-active" : ""
+                      }`}
                   />
                   <span className="text-xs font-bold uppercase tracking-widest">
                     {link.name}

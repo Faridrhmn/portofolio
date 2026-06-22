@@ -2,19 +2,19 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
+import mockupAksaralibrasi from '../../assets/mockup-aksaralibrasi.png';
 
 const projects = [
   {
     title: "Web-Based PACS System",
     description: "A short description of the project goes here. Explain what the project does and the technologies used.",
     image: "https://placehold.co/600x400/png",
-    link: "https://example.com/project1",
     stack: ["Play Framework", "React", "Scala"]
   },
   {
     title: "Javanese Script Image Detection System",
     description: "A Python (Flask)-based web application for Javanese script recognition that uses the Freeman Chain Code (FCC) feature extraction method and the Support Vector Machine (SVM) machine learning algorithm.",
-    image: "https://placehold.co/600x400/png",
+    image: mockupAksaralibrasi,
     link: "https://bachelor-thesis.faridrhmn.my.id/",
     stack: ["Python", "Flask", "SVM", "FCC", "HTML/CSS", "JavaScript", " Bootstrap"]
   }
@@ -57,19 +57,25 @@ const Projects = () => {
                 {/* Content */}
                 <div className="z-10 w-full mt-2">
                   <h3>
-                    <a
-                      className="inline-flex items-baseline font-medium leading-tight text-foreground hover:text-primary focus-visible:text-primary group/link text-base"
-                      href={project.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`${project.title} (opens in a new tab)`}
-                    >
-                      <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
-                      <span>
-                        {project.title}
-                        <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 ml-1 translate-y-px" />
-                      </span>
-                    </a>
+                    {project.link ? (
+                      <a
+                        className="inline-flex items-baseline font-medium leading-tight text-foreground hover:text-primary focus-visible:text-primary group/link text-base"
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${project.title} (opens in a new tab)`}
+                      >
+                        <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
+                        <span>
+                          {project.title}
+                          <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 ml-1 translate-y-px" />
+                        </span>
+                      </a>
+                    ) : (
+                      <div className="inline-flex items-baseline font-medium leading-tight text-foreground text-base">
+                        <span>{project.title}</span>
+                      </div>
+                    )}
                   </h3>
                   <p className="mt-2 text-sm leading-normal text-muted-foreground">
                     {project.description}
