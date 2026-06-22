@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Github, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profilePic from "../../assets/profile-photo.png";
+import profilePic from "../../assets/profile-photo.webp";
 
 export const navLinks = [
   { name: "About", href: "#about" },

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
-import mockupAksaralibrasi from '../../assets/mockup-aksaralibrasi.png';
+import mockupAksaralibrasi from '../../assets/mockup-aksaralibrasi.webp';
 
 const projects = [
   {
