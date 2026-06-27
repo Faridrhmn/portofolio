@@ -21,7 +21,8 @@ const experiences = [
     details: [
       "Developed and maintained a web-based Hospital Information System (SIMRS) using CodeIgniter.",
       "Designed and developed a web-based PACS system from scratch using Play Framework.",
-      "Defined system architecture, developed APIs, and managed medical imaging workflows within the PACS system."
+      "Defined system architecture, developed APIs, and managed medical imaging workflows within the PACS system.",
+      "Successfully migrated an application between server environments."
     ]
   },
   {
