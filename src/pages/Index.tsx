@@ -4,6 +4,7 @@ import Experience from "@/components/portfolio/Experience";
 import Skills from "@/components/portfolio/Skills";
 import Contact from "@/components/portfolio/Contact";
 import Projects from "@/components/portfolio/Projects";
+import Awards from "@/components/portfolio/Awards";
 import Footer from "@/components/portfolio/Footer";
 
 const Index = () => {
@@ -18,6 +19,8 @@ const Index = () => {
             <Experience />
             <div className="h-[2px] w-full bg-border/80 my-12 lg:my-20" />
             <Projects />
+            <div className="h-[2px] w-full bg-border/80 my-12 lg:my-20" />
+            <Awards />
             <div className="h-[2px] w-full bg-border/80 my-12 lg:my-20" />
             <Skills />
             <div className="h-[2px] w-full bg-border/80 my-12 lg:my-20" />

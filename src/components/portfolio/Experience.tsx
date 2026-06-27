@@ -15,7 +15,7 @@ const experiences = [
     title: "Software Developer",
     company: "PT. Farma Global Teknologi",
     period: "Nov 2024 — Present",
-    stack: ["Vue.js", "Play Framework", "CodeIgniter", "Docker", "Git", "PostgreSQL", "RESTful API", "Agile Methodologies", "DICOM", "Microservices"],
+    stack: ["Vue.js", "Play Framework", "CodeIgniter", "Docker", "Git", "PostgreSQL", "MySQL", "RESTful API", "Agile Methodologies", "DICOM"],
     description: "Developed and optimized healthcare systems including SIMRS and PACS. Engineered a document management system (E-Doc) to streamline digital documentation and built a PACS system from scratch.",
     link: "#",
     details: [
@@ -43,13 +43,26 @@ const experiences = [
     period: "Aug 2022 — Jul 2024",
     stack: ["OOP", "Databases", "Networks", "Problem Solving", "Mentoring", "Technical Support", "Team Collaboration"],
     description: "Mentored students in programming courses including Algorithms, OOP, Databases, and Computer Networks. Provided technical guidance and problem-solving support.",
-    link: "#",
+    link: "https://drive.google.com/file/d/16uEtYoA7eO38_ZncEPwuAb8JoqbonCGu/view?usp=drive_link",
     details: [
       "Mentored and guided students in practical sessions for Algorithms, OOP, Databases, and Computer Networks.",
       "Assisted in developing and evaluating laboratory modules, assignments, and practical exams.",
       "Provided one-on-one technical troubleshooting and conceptual problem-solving support to students."
     ]
   },
+  {
+    title: "Project Management Division Member",
+    company: "ITC UPN Veteran Yogyakarta",
+    period: "Aug 2022 — Jan 2023",
+    stack: ["Project Management", "Scrum", "User Stories", "Trello", "Requirements Analysis", "Time Management", "Agile"],
+    description: "Managed project workflows using Scrum methodology, analyzed user requirements, and oversaw task execution to ensure timely project delivery.",
+    link: "https://drive.google.com/file/d/1bcQ2VpogM8PHvAUYU5RlKDHFrykjkla1/view?usp=drive_link",
+    details: [
+      "Analyzed user requirements and translated them into actionable user stories for the development team.",
+      "Implemented Scrum methodology for project development and efficiently managed team tasks using Trello.",
+      "Monitored project progress closely to ensure all deliverables were completed according to the established timeline."
+    ]
+  }
 ];
 
 const Experience = () => {
@@ -150,6 +163,20 @@ const Experience = () => {
                     </ul>
                   )}
                 </div>
+
+                {selectedExp.link && selectedExp.link !== "#" && (
+                  <div className="mb-8">
+                    <a
+                      href={selectedExp.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center font-semibold text-primary hover:text-primary/80 transition-colors bg-primary/10 px-4 py-2 rounded-lg"
+                    >
+                      View Certificate
+                      <ArrowUpRight className="ml-1 h-4 w-4" />
+                    </a>
+                  </div>
+                )}
 
                 <div>
                   <h4 className="text-sm font-bold text-foreground mb-4 uppercase tracking-wider">

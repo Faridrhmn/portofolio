@@ -7,8 +7,8 @@ import mockupAksaralibrasi from '../../assets/mockup-aksaralibrasi.webp';
 const projects = [
   {
     title: "Web-Based PACS System",
-    description: "A short description of the project goes here. Explain what the project does and the technologies used.",
-    image: "https://placehold.co/600x400/png",
+    description: "The PACS Middleware (Picture Archiving and Communication System) is a middleware application that integrates Hospital Information Systems (HIS/SIMRS) with PACS platforms to manage and exchange medical imaging data such as X-rays, CT scans, and MRI studies. It handles patient records, radiology worklists, and study information, supports DICOM communication through dcm4che, processes electronic medical documents such as PDF reports, and provides REST APIs for frontend applications and external systems. The application is built with Scala 3 and Play Framework using PostgreSQL and follows a monolithic architecture where backend and frontend components are maintained within a single repository.",
+    // image: "https://placehold.co/600x400/png",
     stack: ["Play Framework", "React", "Scala"]
   },
   {
@@ -45,14 +45,16 @@ const Projects = () => {
               <div className="group relative flex flex-col gap-4 pb-4 transition-all lg:hover:!opacity-100 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-50/50 lg:p-6 lg:rounded-xl">
 
                 {/* Image */}
-                <div className="z-10 w-full">
-                  <img
-                    alt={project.title}
-                    src={project.image}
-                    loading="lazy"
-                    className="w-full aspect-video rounded-lg border border-border/50 object-cover shadow-sm transition-transform duration-300 group-hover:scale-[1.01]"
-                  />
-                </div>
+                {project.image && (
+                  <div className="z-10 w-full">
+                    <img
+                      alt={project.title}
+                      src={project.image}
+                      loading="lazy"
+                      className="w-full aspect-video rounded-lg border border-border/50 object-cover shadow-sm transition-transform duration-300 group-hover:scale-[1.01]"
+                    />
+                  </div>
+                )}
 
                 {/* Content */}
                 <div className="z-10 w-full mt-2">

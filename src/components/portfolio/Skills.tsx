@@ -6,11 +6,19 @@ import { ArrowUpRight } from "lucide-react";
 const skillCategories = [
   {
     title: "Core Technologies",
-    skills: ["JavaScript", "TypeScript", "React", "Vue.js", "Node.js", "PHP", "CodeIgniter", "MySQL", "PostgreSQL", "HTML5", "CSS3", "Tailwind CSS"],
+    skills: [
+      "Vue.js", "Play Framework", "PHP", "CodeIgniter",
+      "JavaScript", "TypeScript", "React", "Dart", "Flutter",
+      "Python", "C++", "PostgreSQL", "MySQL", "HTML5", "CSS3", "Tailwind CSS"
+    ],
   },
   {
     title: "Architecture & Tools",
-    skills: ["RESTful APIs", "DICOM", "PACS", "SIMRS", "Git", "GitHub", "Postman", "Vite", "Figma", "Docker", "Linux"],
+    skills: [
+      "Microservices", "RESTful APIs", "DICOM", "PACS", "SIMRS",
+      "Docker", "Git", "GitHub", "Agile", "Scrum", "Project Management",
+      "Trello", "Postman", "Linux", "IoT"
+    ],
   },
 ];
 
@@ -26,6 +34,30 @@ const certifications = [
     issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
     date: "2024 - 2027",
     link: "https://drive.google.com/file/d/1vwmGh3KVHe6LUL6GxVsQfQioYzT5BnWD/view",
+  },
+  {
+    title: "Learn the Basics of JavaScript Programming",
+    issuer: "Dicoding Indonesia",
+    date: "2023",
+    link: "https://www.dicoding.com/certificates/JMZV1WO6RXN9",
+  },
+  {
+    title: "Learn the Basics of Structured Query Language (SQL)",
+    issuer: "Dicoding Indonesia",
+    date: "2023",
+    link: "https://www.dicoding.com/certificates/2VX366K7QXYQ",
+  },
+  {
+    title: "Getting Started with Programming to Become a Software Developer",
+    issuer: "Dicoding Indonesia",
+    date: "2023",
+    link: "https://www.dicoding.com/certificates/L4PQ83VYVZO1",
+  },
+  {
+    title: "Learn the Basics of Project Management",
+    issuer: "Dicoding Indonesia",
+    date: "2023",
+    link: "https://www.dicoding.com/certificates/4EXGNMMDQZRL",
   },
   {
     title: "Scrum Fundamentals Certified (SFC)",
@@ -79,7 +111,7 @@ const Skills = () => {
                 className="mb-8 transition-all"
               >
                 <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-50/50 lg:p-4 lg:rounded-xl">
-                  
+
                   {/* Date */}
                   <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:col-span-2">
                     {cert.date}
