@@ -21,13 +21,13 @@ const About = () => {
 
         <div className="text-muted-foreground leading-relaxed space-y-4">
           <p>
-            Back in 2022, I decided to dive deeply into the world of programming during my time as a Laboratory Assistant. Fast-forward to today, and I've had the privilege of building software for a <span className="font-medium text-foreground">healthcare technology company</span>, a <span className="font-medium text-foreground">start-up</span>, and mentoring students in university courses.
+            I pursued my education in <span className="font-medium text-foreground">Informatics</span> at <span className="font-medium text-foreground">UPN "Veteran" Yogyakarta</span>. Back in 2022, I decided to dive deeply into the world of programming during my time as a Laboratory Assistant. Fast-forward to today, and I've had the privilege of building software for a <span className="font-medium text-foreground">healthcare technology company</span>, a <span className="font-medium text-foreground">start-up</span>, and mentoring students in university courses.
           </p>
           <p>
             My main focus these days is building scalable, robust products and leading projects from architecture design to deployment. I most recently built a complete PACS (Picture Archiving and Communication System) from scratch, handling complex API development and DICOM image integrations.
           </p>
           <p>
-            When I'm not at the computer, I'm usually exploring new tech trends, contributing to community discussions, or enjoying a good cup of coffee.
+            When I'm not at the computer, my recent interests involve exploring advancements in AI, diving deeper into modern web architectures, and keeping up with the ever-evolving tech ecosystem. I also enjoy contributing to community discussions, discovering new tools, or simply unwinding with a good cup of coffee.
           </p>
         </div>
       </motion.div>

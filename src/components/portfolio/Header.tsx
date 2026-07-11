@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Linkedin, Github, Mail, Download } from "lucide-react";
+import { Linkedin, Github, Mail, Download, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profilePic from "../../assets/profile-photo.webp";
 
@@ -64,11 +64,15 @@ const Header = () => {
             <h2 className="mt-2 text-lg font-medium tracking-tight text-foreground sm:text-xl">
               Software Developer
             </h2>
+            <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+              <MapPin className="w-4 h-4" />
+              <span>Yogyakarta, Indonesia</span>
+            </div>
           </div>
         </div>
 
         <p className="mt-6 max-w-xs leading-normal text-muted-foreground">
-          I build scalable, modern web applications with a focus on elegant code and user experience.
+          I build scalable, robust applications with a strong focus on backend architecture, API development, and system performance.
         </p>
 
         {/* Desktop Navigation */}

@@ -5,11 +5,23 @@ import { ArrowUpRight } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Core Technologies",
+    title: "Frontend",
     skills: [
-      "Vue.js", "Play Framework", "PHP", "CodeIgniter",
-      "JavaScript", "TypeScript", "React", "Dart", "Flutter",
-      "Python", "C++", "PostgreSQL", "MySQL", "HTML5", "CSS3", "Tailwind CSS"
+      "Vue.js", "React", "JavaScript", "TypeScript",
+      "HTML5", "CSS3", "Tailwind CSS", "Dart", "Flutter", "Bootstrap"
+    ],
+  },
+  {
+    title: "Backend",
+    skills: [
+      "Play Framework", "CodeIgniter", "PHP",
+      "Python", "C++", "Node.js"
+    ],
+  },
+  {
+    title: "Database",
+    skills: [
+      "PostgreSQL", "MySQL", "SQLite", "Firebase"
     ],
   },
   {
