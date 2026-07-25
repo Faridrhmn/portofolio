@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import mockupAksaralibrasi from '../../assets/mockup-aksaralibrasi.webp';
+import mockupWebBidan from '../../assets/mockup-web-bidan.webp';
 
 const projects = [
   {
@@ -10,6 +11,13 @@ const projects = [
     description: "The PACS Middleware (Picture Archiving and Communication System) is a middleware application that integrates Hospital Information Systems (HIS/SIMRS) with PACS platforms to manage and exchange medical imaging data such as X-rays, CT scans, and MRI studies. It handles patient records, radiology worklists, and study information, supports DICOM communication through dcm4che, processes electronic medical documents such as PDF reports, and provides REST APIs for frontend applications and external systems. The application is built with Scala 3 and Play Framework using PostgreSQL and follows a monolithic architecture where backend and frontend components are maintained within a single repository.",
     // image: "https://placehold.co/600x400/png",
     stack: ["Play Framework", "React", "Scala"]
+  },
+  {
+    title: "Poskesdes Digital Medical Record System",
+    description: "A Next.js and PHP (MySQL)-based web application for Poskesdes health services that streamlines patient registration, ANC/KB/Elderly medical records management, schedule tracking, and automated reporting. (Demo credentials — User: test, Pass: test123)",
+    image: mockupWebBidan,
+    link: "https://poskesdes-porto.faridrhmn.my.id/",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PHP", "MySQL", "Nginx", "Systemd"]
   },
   {
     title: "Javanese Script Image Detection System",
