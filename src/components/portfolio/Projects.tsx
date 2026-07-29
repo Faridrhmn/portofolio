@@ -4,11 +4,12 @@ import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import mockupAksaralibrasi from '../../assets/mockup-aksaralibrasi.webp';
 import mockupWebBidan from '../../assets/mockup-web-bidan.webp';
+import mockupWebBouquet from '../../assets/mockup-web-bouquet.webp';
 
 const projects = [
   {
     title: "Web-Based PACS System",
-    description: "The PACS Middleware (Picture Archiving and Communication System) is a middleware application that integrates Hospital Information Systems (HIS/SIMRS) with PACS platforms to manage and exchange medical imaging data such as X-rays, CT scans, and MRI studies. It handles patient records, radiology worklists, and study information, supports DICOM communication through dcm4che, processes electronic medical documents such as PDF reports, and provides REST APIs for frontend applications and external systems. The application is built with Scala 3 and Play Framework using PostgreSQL and follows a monolithic architecture where backend and frontend components are maintained within a single repository.",
+    description: "Developed a robust PACS & HIS integration middleware using Scala 3, Play Framework, and dcm4che to automate medical imaging workflows between hospital systems and radiology modalities. Implemented core DICOM protocol services (MWL C-FIND, C-STORE, C-ECHO) and HL7 messaging, achieving full operational integration with CT, CR, and DX imaging equipment in compliance with Siemens standards for reliable, multi-vendor data exchange and electronic report management.",
     // image: "https://placehold.co/600x400/png",
     stack: ["Play Framework", "React", "Scala"]
   },
@@ -19,6 +20,14 @@ const projects = [
     link: "https://poskesdes-porto.faridrhmn.my.id/",
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PHP", "MySQL", "Nginx", "Systemd"]
   },
+  {
+    title: "Dzakirah Bouquet E-Commerce & Order System",
+    description: "A responsive e-commerce web application for custom bouquet craft business featuring dynamic category filtering, real-time add-on price calculation, greeting card customizer, and automated WhatsApp order integration.",
+    image: mockupWebBouquet,
+    link: "https://bouquet.faridrhmn.my.id/",
+    stack: ["HTML5", "CSS3", "JavaScript (ES6)", "Bootstrap", "jQuery", "Nginx", "Systemd", "Certbot"]
+  },
+
   {
     title: "Javanese Script Image Detection System",
     description: "A Python (Flask)-based web application for Javanese script recognition that uses the Freeman Chain Code (FCC) feature extraction method and the Support Vector Machine (SVM) machine learning algorithm.",
