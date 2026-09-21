@@ -51,28 +51,28 @@ const Header = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+        <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center">
           <img
             src={profilePic}
             alt="Bahruddin Farid"
-            className="w-32 h-32 sm:w-36 sm:h-36 rounded-3xl object-cover border-4 border-muted/50 shadow-lg shrink-0"
+            className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl object-cover border-2 border-border shadow-sm shrink-0"
           />
           <div>
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
               <a href="/">Bahruddin Farid</a>
             </h1>
-            <h2 className="mt-2 text-lg font-medium tracking-tight text-foreground sm:text-xl">
+            <h2 className="mt-1 text-base sm:text-lg font-medium text-primary">
               Software Developer
             </h2>
-            <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="w-4 h-4" />
+            <div className="mt-1.5 flex items-center gap-1.5 text-xs text-muted-foreground">
+              <MapPin className="w-3.5 h-3.5 text-muted-foreground/80" />
               <span>Yogyakarta, Indonesia</span>
             </div>
           </div>
         </div>
 
-        <p className="mt-6 max-w-xs leading-normal text-muted-foreground">
-          I build scalable, robust applications with a strong focus on backend architecture, API development, and system performance.
+        <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
+          Software developer focused on backend architectures, healthcare systems integration (DICOM / HL7 / PACS), and robust web applications.
         </p>
 
         {/* Desktop Navigation */}
@@ -82,14 +82,16 @@ const Header = () => {
               <li key={link.name}>
                 <a
                   href={link.href}
-                  className={`group flex items-center py-3 ${activeSection === link.href ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                    }`}
+                  className={`group flex items-center py-2.5 transition-colors ${
+                    activeSection === link.href ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
                   <span
-                    className={`nav-indicator ${activeSection === link.href ? "nav-indicator-active" : ""
-                      }`}
+                    className={`nav-indicator ${
+                      activeSection === link.href ? "nav-indicator-active" : ""
+                    }`}
                   />
-                  <span className="text-xs font-bold uppercase tracking-widest">
+                  <span className="text-xs uppercase tracking-widest">
                     {link.name}
                   </span>
                 </a>
@@ -103,34 +105,47 @@ const Header = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="mt-8 flex flex-wrap items-center gap-6"
+        className="mt-8 flex flex-wrap items-center gap-5"
       >
-        <ul className="flex items-center gap-5">
+        <ul className="flex items-center gap-4">
           <li>
-            <a href="https://github.com/faridrhmn" className="text-muted-foreground hover:text-foreground transition-colors" target="_blank" rel="noreferrer">
-              <span className="sr-only">GitHub</span>
-              <Github className="w-6 h-6" />
+            <a 
+              href="https://github.com/faridrhmn" 
+              className="text-muted-foreground hover:text-foreground transition-colors p-1" 
+              target="_blank" 
+              rel="noreferrer"
+              aria-label="GitHub Profile"
+            >
+              <Github className="w-5 h-5" />
             </a>
           </li>
           <li>
-            <a href="https://linkedin.com/in/merhmn" className="text-muted-foreground hover:text-foreground transition-colors" target="_blank" rel="noreferrer">
-              <span className="sr-only">LinkedIn</span>
-              <Linkedin className="w-6 h-6" />
+            <a 
+              href="https://linkedin.com/in/merhmn" 
+              className="text-muted-foreground hover:text-foreground transition-colors p-1" 
+              target="_blank" 
+              rel="noreferrer"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin className="w-5 h-5" />
             </a>
           </li>
           <li>
-            <a href="mailto:bfaridrahman@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
-              <span className="sr-only">Email</span>
-              <Mail className="w-6 h-6" />
+            <a 
+              href="mailto:bfaridrahman@gmail.com" 
+              className="text-muted-foreground hover:text-foreground transition-colors p-1"
+              aria-label="Send Email"
+            >
+              <Mail className="w-5 h-5" />
             </a>
           </li>
         </ul>
 
-        <div className="h-6 w-px bg-border hidden sm:block"></div>
+        <div className="h-5 w-px bg-border hidden sm:block"></div>
 
-        <Button variant="outline" size="sm" className="gap-2 group hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-full px-5" asChild>
+        <Button variant="outline" size="sm" className="gap-2 group hover:bg-primary hover:text-primary-foreground transition-all duration-200 rounded-lg px-4 text-xs font-medium" asChild>
           <a href="/CV_Bahruddin_Farid.pdf" download="CV_Bahruddin_Farid.pdf">
-            <Download className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
+            <Download className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
             Download CV
           </a>
         </Button>

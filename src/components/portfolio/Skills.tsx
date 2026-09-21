@@ -5,31 +5,30 @@ import { ArrowUpRight } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Frontend",
+    title: "Backend & Healthcare Protocols",
     skills: [
-      "Vue.js", "React", "JavaScript", "TypeScript",
-      "HTML5", "CSS3", "Tailwind CSS", "Dart", "Flutter", "Bootstrap"
+      "Scala 3", "Play Framework", "DICOM 3.0", "HL7", "dcm4che",
+      "CodeIgniter", "PHP", "Python", "C++", "RESTful APIs"
     ],
   },
   {
-    title: "Backend",
+    title: "Frontend & Mobile",
     skills: [
-      "Play Framework", "CodeIgniter", "PHP",
-      "Python", "C++", "Node.js"
+      "Vue.js", "React", "TypeScript", "Next.js", "JavaScript (ES6+)",
+      "Flutter", "Dart", "Tailwind CSS", "Bootstrap", "HTML5/CSS3"
     ],
   },
   {
-    title: "Database",
+    title: "Databases",
     skills: [
       "PostgreSQL", "MySQL", "SQLite", "Firebase"
     ],
   },
   {
-    title: "Architecture & Tools",
+    title: "DevOps, Systems & Methods",
     skills: [
-      "Microservices", "RESTful APIs", "DICOM", "PACS", "SIMRS",
-      "Docker", "Git", "GitHub", "Agile", "Scrum", "Project Management",
-      "Trello", "Postman", "Linux", "IoT"
+      "Docker", "Linux", "Nginx", "Systemd", "Git", "GitHub",
+      "IoT / Telemetry", "Postman", "Scrum", "Agile Methodologies"
     ],
   },
 ];
@@ -38,14 +37,20 @@ const certifications = [
   {
     title: "Junior Web Programmer",
     issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
-    date: "2024 - 2027",
+    date: "2024 — 2027",
     link: "https://drive.google.com/file/d/1dW7WANn77-UoPn0ijdTDql3hdbvrN1Iv/view",
   },
   {
-    title: "Associate data science",
+    title: "Associate Data Science",
     issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
-    date: "2024 - 2027",
+    date: "2024 — 2027",
     link: "https://drive.google.com/file/d/1vwmGh3KVHe6LUL6GxVsQfQioYzT5BnWD/view",
+  },
+  {
+    title: "Scrum Fundamentals Certified (SFC)",
+    issuer: "SCRUMstudy",
+    date: "2022",
+    link: "https://www.scrumstudy.com/certification/verify?type=SFC&number=938806",
   },
   {
     title: "Learn the Basics of JavaScript Programming",
@@ -60,23 +65,11 @@ const certifications = [
     link: "https://www.dicoding.com/certificates/2VX366K7QXYQ",
   },
   {
-    title: "Getting Started with Programming to Become a Software Developer",
-    issuer: "Dicoding Indonesia",
-    date: "2023",
-    link: "https://www.dicoding.com/certificates/L4PQ83VYVZO1",
-  },
-  {
     title: "Learn the Basics of Project Management",
     issuer: "Dicoding Indonesia",
     date: "2023",
     link: "https://www.dicoding.com/certificates/4EXGNMMDQZRL",
-  },
-  {
-    title: "Scrum Fundamentals Certified (SFC)",
-    issuer: "SCRUMstudy",
-    date: "2022",
-    link: "https://www.scrumstudy.com/certification/verify?type=SFC&number=938806",
-  },
+  }
 ];
 
 const Skills = () => {
@@ -97,16 +90,18 @@ const Skills = () => {
         transition={{ duration: 0.6 }}
         className="space-y-12"
       >
-        <div className="space-y-8">
+        <div className="space-y-6">
           {skillCategories.map((category) => (
-            <div key={category.title}>
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground mb-4">{category.title}</h3>
-              <ul className="flex flex-wrap gap-2" aria-label={`${category.title} skills`}>
+            <div key={category.title} className="space-y-2.5">
+              <h3 className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+                {category.title}
+              </h3>
+              <ul className="flex flex-wrap gap-1.5" aria-label={`${category.title} skills`}>
                 {category.skills.map((skill) => (
                   <li key={skill}>
-                    <div className="flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium leading-5 text-primary">
+                    <span className="inline-block rounded-md bg-muted/60 px-3 py-1 text-xs font-mono text-foreground/85 border border-border/40 hover:border-primary/40 hover:text-primary transition-colors">
                       {skill}
-                    </div>
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -114,57 +109,42 @@ const Skills = () => {
           ))}
         </div>
 
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-foreground mb-6">Certifications</h3>
-          <ol className="group/list">
+        <div className="pt-4">
+          <h3 className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-4">
+            Certifications & Credentials
+          </h3>
+          <ul className="space-y-3">
             {certifications.map((cert, index) => (
-              <li
-                key={index}
-                className="mb-8 transition-all"
-              >
-                <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-50/50 lg:p-4 lg:rounded-xl">
-
-                  {/* Date */}
-                  <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:col-span-2">
-                    {cert.date}
-                  </header>
-
-                  {/* Content */}
-                  <div className="z-10 sm:col-span-6">
-                    <h3 className="font-medium leading-snug text-foreground">
-                      <div>
-                        {cert.link ? (
-                          <a
-                            className="inline-flex items-baseline font-medium leading-tight text-foreground hover:text-primary focus-visible:text-primary group/link text-base"
-                            href={cert.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            aria-label={`${cert.title} (opens in a new tab)`}
-                          >
-                            <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
-                            <span>
-                              {cert.title}
-                              <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 ml-1 translate-y-px" />
-                            </span>
-                          </a>
-                        ) : (
-                          <span className="inline-flex items-baseline font-medium leading-tight text-foreground text-base">
-                            {cert.title}
-                          </span>
-                        )}
-                      </div>
-                    </h3>
-                    <p className="mt-2 text-sm leading-normal text-muted-foreground">
+              <li key={index}>
+                <div className="group flex items-baseline justify-between gap-4 p-3 rounded-lg border border-border/40 bg-muted/20 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                  <div className="space-y-0.5">
+                    {cert.link ? (
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-sm font-medium text-foreground hover:text-primary transition-colors inline-flex items-center gap-1"
+                      >
+                        <span>{cert.title}</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
+                      </a>
+                    ) : (
+                      <span className="text-sm font-medium text-foreground">
+                        {cert.title}
+                      </span>
+                    )}
+                    <p className="text-xs text-muted-foreground">
                       {cert.issuer}
                     </p>
                   </div>
-
+                  <span className="text-xs font-mono text-muted-foreground shrink-0">
+                    {cert.date}
+                  </span>
                 </div>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
-
       </motion.div>
     </section>
   );

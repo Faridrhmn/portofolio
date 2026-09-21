@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -10,66 +10,81 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-const experiences = [
+interface ExperienceItem {
+  title: string;
+  company: string;
+  period: string;
+  type: string;
+  description: string;
+  link?: string;
+  details: string[];
+  stack: string[];
+}
+
+const experiences: ExperienceItem[] = [
   {
     title: "Software Developer",
     company: "PT. Farma Global Teknologi",
-    period: "Nov 2024 — Present",
-    stack: ["Vue.js", "Play Framework", "CodeIgniter", "Docker", "Git", "PostgreSQL", "MySQL", "RESTful API", "Agile Methodologies", "DICOM"],
-    description: "Developed and optimized healthcare systems including SIMRS and PACS. Engineered a document management system (E-Doc) to streamline digital documentation and built a PACS system from scratch.",
+    period: "2024 — Present",
+    type: "Full-Time",
+    description: "Developing enterprise healthcare software. Built an on-premise PACS middleware from scratch, maintained Hospital Information System (SIMRS) modules, and engineered digital document management services.",
     link: "#",
     details: [
-      "Developed and maintained a web-based Hospital Information System (SIMRS) using CodeIgniter.",
-      "Designed and developed a web-based PACS system from scratch using Play Framework.",
-      "Defined system architecture, developed APIs, and managed medical imaging workflows within the PACS system.",
-      "Successfully migrated an application between server environments."
-    ]
+      "Designed and developed a complete PACS middleware using Scala 3, Play Framework, and dcm4che for DICOM 3.0 image archiving and modality orchestration.",
+      "Maintained and added features to the core web-based Hospital Information System (SIMRS) using CodeIgniter and MySQL.",
+      "Built APIs and HL7 integration layers for medical data synchronization between electronic health records and radiology devices.",
+      "Managed server deployments, database indexing, and application migration across on-premise hospital environments."
+    ],
+    stack: ["Scala 3", "Play Framework", "Vue.js", "CodeIgniter", "PostgreSQL", "MySQL", "DICOM", "HL7", "Docker", "Linux"]
   },
   {
     title: "Web Developer Intern",
     company: "PT. Seigan Teknologi",
-    period: "Jan 2024 — Mar 2024",
-    stack: ["CodeIgniter", "PHP", "MySQL"],
-    description: "Built and maintained web applications using CodeIgniter. Implemented and improved system features based on project requirements while collaborating in an agile team.",
+    period: "2024",
+    type: "Internship",
+    description: "Built and optimized web applications using CodeIgniter and PHP. Implemented new client features and handled maintenance in an agile development sprint cycle.",
     link: "#",
     details: [
-      "Developed scalable web applications utilizing the CodeIgniter framework, PHP, and MySQL.",
-      "Implemented new system features and optimized existing ones based on project requirements.",
-      "Collaborated effectively in an agile team environment to troubleshoot and deploy updates."
-    ]
+      "Developed scalable web application features using CodeIgniter, PHP, and MySQL.",
+      "Refactored database queries to improve page load speed and system responsiveness.",
+      "Collaborated in sprint planning, code troubleshooting, and staging environment testing."
+    ],
+    stack: ["CodeIgniter", "PHP", "MySQL", "JavaScript", "Bootstrap", "Git"]
   },
   {
     title: "Laboratory Assistant",
-    company: "UPN Veteran Yogyakarta",
-    period: "Aug 2022 — Jul 2024",
-    stack: ["OOP", "Databases", "Networks", "Problem Solving", "Mentoring", "Technical Support", "Team Collaboration"],
-    description: "Mentored students in programming courses including Algorithms, OOP, Databases, and Computer Networks. Provided technical guidance and problem-solving support.",
+    company: "UPN \"Veteran\" Yogyakarta",
+    period: "2022 — 2024",
+    type: "Academic",
+    description: "Guided undergraduate students in core computing laboratories, conducting weekly practical sessions, grading assignments, and providing technical troubleshooting.",
     link: "https://drive.google.com/file/d/16uEtYoA7eO38_ZncEPwuAb8JoqbonCGu/view?usp=drive_link",
     details: [
-      "Mentored and guided students in practical sessions for Algorithms, OOP, Databases, and Computer Networks.",
-      "Assisted in developing and evaluating laboratory modules, assignments, and practical exams.",
-      "Provided one-on-one technical troubleshooting and conceptual problem-solving support to students."
-    ]
+      "Instructed lab sessions for Object-Oriented Programming, Database Systems, Computer Networks, and Algorithms.",
+      "Developed practical exercise modules and evaluated student project submissions.",
+      "Assisted students with low-level debugging, SQL queries, and network protocol configuration."
+    ],
+    stack: ["OOP", "Databases", "Computer Networks", "Algorithms", "Java", "C++", "SQL"]
   },
   {
-    title: "Project Management Division Member",
-    company: "ITC UPN Veteran Yogyakarta",
-    period: "Aug 2022 — Jan 2023",
-    stack: ["Project Management", "Scrum", "User Stories", "Trello", "Requirements Analysis", "Time Management", "Agile"],
-    description: "Managed project workflows using Scrum methodology, analyzed user requirements, and oversaw task execution to ensure timely project delivery.",
+    title: "Project Management Member",
+    company: "ITC UPN \"Veteran\" Yogyakarta",
+    period: "2022 — 2023",
+    type: "Organization",
+    description: "Managed project roadmaps and team deliverables using Scrum methodology for student software engineering initiatives.",
     link: "https://drive.google.com/file/d/1bcQ2VpogM8PHvAUYU5RlKDHFrykjkla1/view?usp=drive_link",
     details: [
-      "Analyzed user requirements and translated them into actionable user stories for the development team.",
-      "Implemented Scrum methodology for project development and efficiently managed team tasks using Trello.",
-      "Monitored project progress closely to ensure all deliverables were completed according to the established timeline."
-    ]
+      "Broke down user requirements into actionable sprint backlogs and user stories.",
+      "Facilitated task tracking using Trello and sprint review sessions.",
+      "Coordinated between design and development teams to ensure milestones were met on schedule."
+    ],
+    stack: ["Scrum", "Agile", "User Stories", "Trello", "Requirements Analysis"]
   }
 ];
 
 const Experience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [selectedExp, setSelectedExp] = useState<typeof experiences[0] | null>(null);
+  const [selectedExp, setSelectedExp] = useState<ExperienceItem | null>(null);
 
   return (
     <section id="experience" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" ref={ref}>
@@ -80,7 +95,7 @@ const Experience = () => {
       </div>
 
       <div>
-        <ol className="group/list">
+        <ul className="group/list">
           {experiences.map((exp, index) => (
             <motion.li
               key={index}
@@ -90,109 +105,138 @@ const Experience = () => {
               className="mb-12 transition-all"
             >
               <div
-                className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-50/50 lg:p-4 lg:rounded-xl cursor-pointer"
+                className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-50/50 dark:lg:hover:bg-slate-800/30 lg:p-6 lg:rounded-xl cursor-pointer"
                 onClick={() => setSelectedExp(exp)}
               >
-
-                {/* Period */}
-                <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:col-span-2">
-                  {exp.period}
+                {/* Period & Meta */}
+                <header className="z-10 mb-2 mt-1 text-xs font-mono text-muted-foreground sm:col-span-2 flex flex-col gap-1">
+                  <span>{exp.period}</span>
+                  <span className="text-[11px] font-sans font-medium text-foreground/70">
+                    {exp.type}
+                  </span>
                 </header>
 
                 {/* Content */}
-                <div className="z-10 sm:col-span-6">
-                  <h3 className="font-medium leading-snug text-foreground">
-                    <div>
-                      <div
-                        className="inline-flex items-baseline font-medium leading-tight text-foreground hover:text-primary focus-visible:text-primary group/link text-base"
-                        aria-label={`${exp.title} at ${exp.company}`}
-                      >
-                        <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
-                        <span>
-                          {exp.title} · <span className="inline-block">{exp.company}</span>
-                          <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 ml-1 translate-y-px" />
-                        </span>
-                      </div>
-                    </div>
-                  </h3>
-                  <p className="mt-2 text-sm leading-normal text-muted-foreground">
+                <div className="z-10 sm:col-span-6 space-y-2.5">
+                  <div>
+                    <h3 className="font-semibold text-lg leading-snug text-foreground group-hover:text-primary transition-colors inline-flex items-center gap-1">
+                      <span>{exp.title}</span>
+                      <span className="text-muted-foreground font-normal">·</span>
+                      <span className="text-foreground/90 font-medium">{exp.company}</span>
+                      <ArrowUpRight className="w-4 h-4 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </h3>
+                  </div>
+
+                  <p className="text-sm leading-relaxed text-muted-foreground">
                     {exp.description}
                   </p>
-                  <ul className="mt-4 flex flex-wrap" aria-label="Technologies used">
+
+                  {/* Highlights Bullet list */}
+                  {exp.details && exp.details.length > 0 && (
+                    <ul className="space-y-1.5 text-xs text-foreground/85 pt-1">
+                      {exp.details.slice(0, 2).map((detail, dIdx) => (
+                        <li key={dIdx} className="flex items-start gap-2">
+                          <span className="text-primary font-bold select-none">•</span>
+                          <span>{detail}</span>
+                        </li>
+                      ))}
+                      {exp.details.length > 2 && (
+                        <li className="text-[11px] text-primary font-medium pl-3 pt-0.5">
+                          + {exp.details.length - 2} more responsibilities & implementations
+                        </li>
+                      )}
+                    </ul>
+                  )}
+
+                  {/* Tech Stack */}
+                  <ul className="mt-3 flex flex-wrap" aria-label="Technologies used">
                     {exp.stack.map(tech => (
                       <li key={tech} className="mr-1.5 mt-2">
-                        <div className="flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium leading-5 text-primary">
+                        <span className="inline-flex items-center rounded-md bg-muted/60 px-2.5 py-1 text-xs font-mono text-foreground/80 border border-border/40">
                           {tech}
-                        </div>
+                        </span>
                       </li>
                     ))}
                   </ul>
                 </div>
-
               </div>
             </motion.li>
           ))}
-        </ol>
+        </ul>
       </div>
 
+      {/* Experience Detail Modal */}
       <Dialog open={!!selectedExp} onOpenChange={(open) => !open && setSelectedExp(null)}>
-        <DialogContent className="max-w-2xl sm:rounded-2xl p-8 gap-6">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto sm:rounded-2xl p-6 sm:p-8 gap-6">
           {selectedExp && (
             <>
-              <DialogHeader>
+              <DialogHeader className="text-left space-y-1.5">
+                <div className="flex items-center justify-between gap-2 text-xs">
+                  <span className="font-mono text-muted-foreground">
+                    {selectedExp.period}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 font-medium text-foreground/80">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    {selectedExp.type}
+                  </span>
+                </div>
                 <DialogTitle className="text-2xl font-bold tracking-tight text-foreground">
                   {selectedExp.title}
                 </DialogTitle>
-                <DialogDescription className="text-lg font-medium text-primary mt-1">
+                <DialogDescription className="text-base font-medium text-primary">
                   {selectedExp.company}
                 </DialogDescription>
               </DialogHeader>
 
-              <div className="mt-2">
-                <p className="text-sm text-muted-foreground mb-6 font-semibold uppercase tracking-wider">
-                  {selectedExp.period}
-                </p>
-                <div className="prose prose-slate dark:prose-invert text-base leading-relaxed text-foreground/80 mb-8">
-                  <p>{selectedExp.description}</p>
-                  {selectedExp.details && selectedExp.details.length > 0 && (
-                    <ul className="mt-5 list-outside list-disc pl-5 space-y-2 marker:text-primary/70 text-sm text-foreground/90">
-                      {selectedExp.details.map((detail, idx) => (
-                        <li key={idx} className="pl-1 leading-relaxed">
-                          {detail}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+              {/* Description */}
+              <div className="text-sm leading-relaxed text-foreground/85 bg-muted/20 p-3.5 rounded-lg border border-border/40">
+                <p>{selectedExp.description}</p>
+              </div>
 
-                {selectedExp.link && selectedExp.link !== "#" && (
-                  <div className="mb-8">
-                    <a
-                      href={selectedExp.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center font-semibold text-primary hover:text-primary/80 transition-colors bg-primary/10 px-4 py-2 rounded-lg"
-                    >
-                      View Certificate
-                      <ArrowUpRight className="ml-1 h-4 w-4" />
-                    </a>
-                  </div>
-                )}
+              {/* Responsibilities */}
+              <div className="space-y-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
+                  Key Responsibilities & Deliverables
+                </h4>
+                <ul className="space-y-2">
+                  {selectedExp.details.map((detail, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5 text-xs text-foreground/90 leading-relaxed bg-muted/20 p-2.5 rounded-lg border border-border/30">
+                      <span className="text-primary font-bold select-none">•</span>
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
+              {/* Document Link */}
+              {selectedExp.link && selectedExp.link !== "#" && (
                 <div>
-                  <h4 className="text-sm font-bold text-foreground mb-4 uppercase tracking-wider">
-                    Technologies & Skills
-                  </h4>
-                  <ul className="flex flex-wrap gap-2" aria-label="Technologies used">
-                    {selectedExp.stack.map(tech => (
-                      <li key={tech}>
-                        <div className="flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary transition-colors hover:bg-primary/20">
-                          {tech}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                  <a
+                    href={selectedExp.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-xs font-medium hover:bg-primary/90 transition-colors shadow-sm"
+                  >
+                    <span>View Reference / Certificate</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
                 </div>
+              )}
+
+              {/* Technologies */}
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
+                  Skills & Tools Leveraged
+                </h4>
+                <ul className="flex flex-wrap gap-1.5">
+                  {selectedExp.stack.map(tech => (
+                    <li key={tech}>
+                      <span className="inline-block rounded-md bg-muted/60 px-2.5 py-1 text-xs font-mono text-foreground/80 border border-border/40">
+                        {tech}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </>
           )}

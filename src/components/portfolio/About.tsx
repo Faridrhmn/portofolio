@@ -19,15 +19,15 @@ const About = () => {
           </h2>
         </div>
 
-        <div className="text-muted-foreground leading-relaxed space-y-4">
+        <div className="text-sm leading-relaxed text-muted-foreground space-y-4">
           <p>
-            I pursued my education in <span className="font-medium text-foreground">Informatics</span> at <span className="font-medium text-foreground">UPN "Veteran" Yogyakarta</span>. Back in 2022, I decided to dive deeply into the world of programming during my time as a Laboratory Assistant. Fast-forward to today, and I've had the privilege of building software for a <span className="font-medium text-foreground">healthcare technology company</span>, a <span className="font-medium text-foreground">start-up</span>, and mentoring students in university courses.
+            I graduated in <span className="font-medium text-foreground">Informatics</span> from <span className="font-medium text-foreground">UPN "Veteran" Yogyakarta</span>. My technical journey began with teaching computer science fundamentals as a Laboratory Assistant, covering Object-Oriented Programming, Database Systems, and Computer Networks.
           </p>
           <p>
-            My main focus these days is building scalable, robust products and leading projects from architecture design to deployment. I most recently built a complete PACS (Picture Archiving and Communication System) from scratch, handling complex API development and DICOM image integrations.
+            Currently, I work as a <span className="font-medium text-foreground">Software Developer</span> at <span className="font-medium text-foreground">PT. Farma Global Teknologi</span>, where I build healthcare systems. My core work involves engineering backend services, Hospital Information Systems (SIMRS), and building an on-premise PACS (Picture Archiving and Communication System) middleware from the ground up to integrate radiology modalities with DICOM 3.0 and HL7 protocols.
           </p>
           <p>
-            When I'm not at the computer, my recent interests involve exploring advancements in AI, diving deeper into modern web architectures, and keeping up with the ever-evolving tech ecosystem. I also enjoy contributing to community discussions, discovering new tools, or simply unwinding with a good cup of coffee.
+            Beyond work, I have a background in autonomous robotics competitions (Finalist at Kontes Kapal Indonesia 2024) and machine learning research for character recognition. I care about clean architecture, system interoperability, and practical software engineering.
           </p>
         </div>
       </motion.div>
