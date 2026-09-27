@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ArrowUpRight, ExternalLink, ShieldCheck, Camera, Instagram } from "lucide-react";
+import { ArrowUpRight, ExternalLink, ShieldCheck, Camera, Instagram, KeyRound, Copy, Check } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -21,6 +21,12 @@ interface InstagramPost {
   type: "photo" | "reel";
 }
 
+interface DemoCredentials {
+  username: string;
+  password: string;
+  note?: string;
+}
+
 interface ProjectItem {
   title: string;
   categoryTag: string;
@@ -30,6 +36,7 @@ interface ProjectItem {
   image: string;
   imageCaption: string;
   confidentialNotice?: string;
+  demoCredentials?: DemoCredentials;
   highlights: string[];
   stack: string[];
   link?: string;
@@ -84,6 +91,11 @@ const projects: ProjectItem[] = [
     image: mockupWebBidan,
     imageCaption: "Production UI: Patient records management, maternal/elderly health analytics, and clinical consultation records.",
     link: "https://poskesdes-porto.faridrhmn.my.id/",
+    demoCredentials: {
+      username: "test",
+      password: "test123",
+      note: "Public trial credentials for demo evaluation"
+    },
     highlights: [
       "Digitized routine clinic workflows for Antenatal Care (ANC), Family Planning (KB), and Elderly health monitoring.",
       "Implemented role-based access control, monthly health statistics generation, and historical consultation tracking.",
@@ -127,6 +139,7 @@ const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [copiedField, setCopiedField] = useState<'user' | 'pass' | null>(null);
 
   return (
     <section id="projects" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" ref={ref}>
@@ -190,6 +203,20 @@ const Projects = () => {
                     {project.description}
                   </p>
 
+                  {/* Demo Credentials Badge in Card */}
+                  {project.demoCredentials && (
+                    <div className="mt-3 inline-flex flex-wrap items-center gap-2 px-2.5 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-xs">
+                      <KeyRound className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                      <span className="text-[11px] font-medium text-emerald-600 dark:text-emerald-400">Demo:</span>
+                      <span className="font-mono text-[11px] bg-background/80 px-1.5 py-0.5 rounded border border-border/50 text-foreground/90">
+                        user: <span className="font-semibold text-foreground">{project.demoCredentials.username}</span>
+                      </span>
+                      <span className="font-mono text-[11px] bg-background/80 px-1.5 py-0.5 rounded border border-border/50 text-foreground/90">
+                        pass: <span className="font-semibold text-foreground">{project.demoCredentials.password}</span>
+                      </span>
+                    </div>
+                  )}
+
                   {/* Highlights Bullet List */}
                   {project.highlights && project.highlights.length > 0 && (
                     <ul className="mt-3 space-y-1.5 text-xs text-foreground/85">
@@ -225,7 +252,15 @@ const Projects = () => {
       </div>
 
       {/* Project Detail Modal */}
-      <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+      <Dialog
+        open={!!selectedProject}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSelectedProject(null);
+            setCopiedField(null);
+          }
+        }}
+      >
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto sm:rounded-2xl p-6 sm:p-8 gap-6">
           {selectedProject && (
             <>
@@ -324,6 +359,86 @@ const Projects = () => {
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {/* Demo Credentials Box */}
+              {selectedProject.demoCredentials && (
+                <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20 space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <div className="p-1.5 rounded-md bg-emerald-500/10 text-emerald-500">
+                        <KeyRound className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
+                          Demo Credentials
+                        </h4>
+                        {selectedProject.demoCredentials.note && (
+                          <p className="text-[11px] text-muted-foreground">
+                            {selectedProject.demoCredentials.note}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                      Trial Access
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-0.5">
+                    <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-background border border-border/60">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] uppercase font-semibold text-muted-foreground">Username</span>
+                        <span className="text-xs font-mono font-medium text-foreground select-all">
+                          {selectedProject.demoCredentials.username}
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigator.clipboard.writeText(selectedProject.demoCredentials!.username);
+                          setCopiedField('user');
+                          setTimeout(() => setCopiedField(null), 2000);
+                        }}
+                        className="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+                        title="Copy username"
+                      >
+                        {copiedField === 'user' ? (
+                          <Check className="w-3.5 h-3.5 text-emerald-500" />
+                        ) : (
+                          <Copy className="w-3.5 h-3.5" />
+                        )}
+                      </button>
+                    </div>
+
+                    <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-background border border-border/60">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] uppercase font-semibold text-muted-foreground">Password</span>
+                        <span className="text-xs font-mono font-medium text-foreground select-all">
+                          {selectedProject.demoCredentials.password}
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigator.clipboard.writeText(selectedProject.demoCredentials!.password);
+                          setCopiedField('pass');
+                          setTimeout(() => setCopiedField(null), 2000);
+                        }}
+                        className="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+                        title="Copy password"
+                      >
+                        {copiedField === 'pass' ? (
+                          <Check className="w-3.5 h-3.5 text-emerald-500" />
+                        ) : (
+                          <Copy className="w-3.5 h-3.5" />
+                        )}
+                      </button>
+                    </div>
+                  </div>
                 </div>
               )}
 
