@@ -27,7 +27,7 @@ const About = () => {
             Currently, I work as a <span className="font-medium text-foreground">Software Developer</span> at <span className="font-medium text-foreground">PT. Farma Global Teknologi</span>, where I build healthcare systems. My core work involves engineering backend services, Hospital Information Systems (SIMRS), and building an on-premise PACS (Picture Archiving and Communication System) middleware from the ground up to integrate radiology modalities with DICOM 3.0 and HL7 protocols.
           </p>
           <p>
-            Beyond work, I have a background in autonomous robotics competitions (Finalist at Kontes Kapal Indonesia 2024) and machine learning research for character recognition. I care about clean architecture, system interoperability, and practical software engineering.
+            Beyond work, I have a background in autonomous robotics competitions (Finalist at Kontes Kapal Indonesia 2024) and machine learning research for character recognition. I actively leverage modern agentic development workflows (Antigravity) and explore open-source LLMs (DeepSeek, Hermes) for intelligent automation. I care about clean architecture, system interoperability, and practical software engineering.
           </p>
         </div>
       </motion.div>

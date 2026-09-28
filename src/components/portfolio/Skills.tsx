@@ -25,6 +25,13 @@ const skillCategories = [
     ],
   },
   {
+    title: "AI & Modern Developer Tooling",
+    skills: [
+      "Agentic AI Workflows (Antigravity)", "Open-Source LLMs (DeepSeek, Hermes)",
+      "Tool Calling & Function Calling", "Prompt Engineering", "Local LLM Inference"
+    ],
+  },
+  {
     title: "DevOps, Systems & Methods",
     skills: [
       "Docker", "Linux", "Nginx", "Systemd", "Git", "GitHub",
