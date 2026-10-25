@@ -23,7 +23,7 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    title: "Software Developer",
+    title: "Software Engineer",
     company: "PT. Farma Global Teknologi",
     period: "2024 — Present",
     type: "Full-Time",

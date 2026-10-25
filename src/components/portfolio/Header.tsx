@@ -62,7 +62,7 @@ const Header = () => {
               <a href="/">Bahruddin Farid</a>
             </h1>
             <h2 className="mt-1 text-base sm:text-lg font-medium text-primary">
-              Software Developer
+              Software Engineer
             </h2>
             <div className="mt-1.5 flex items-center gap-1.5 text-xs text-muted-foreground">
               <MapPin className="w-3.5 h-3.5 text-muted-foreground/80" />
@@ -72,7 +72,7 @@ const Header = () => {
         </div>
 
         <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
-          Software developer focused on backend architectures, healthcare systems integration (DICOM / HL7 / PACS), and robust web applications.
+          Software engineer focused on backend architectures, healthcare systems integration (DICOM / HL7 / PACS), and robust web applications.
         </p>
 
         {/* Desktop Navigation */}
@@ -82,14 +82,12 @@ const Header = () => {
               <li key={link.name}>
                 <a
                   href={link.href}
-                  className={`group flex items-center py-2.5 transition-colors ${
-                    activeSection === link.href ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
-                  }`}
+                  className={`group flex items-center py-2.5 transition-colors ${activeSection === link.href ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
+                    }`}
                 >
                   <span
-                    className={`nav-indicator ${
-                      activeSection === link.href ? "nav-indicator-active" : ""
-                    }`}
+                    className={`nav-indicator ${activeSection === link.href ? "nav-indicator-active" : ""
+                      }`}
                   />
                   <span className="text-xs uppercase tracking-widest">
                     {link.name}
@@ -109,10 +107,10 @@ const Header = () => {
       >
         <ul className="flex items-center gap-4">
           <li>
-            <a 
-              href="https://github.com/faridrhmn" 
-              className="text-muted-foreground hover:text-foreground transition-colors p-1" 
-              target="_blank" 
+            <a
+              href="https://github.com/faridrhmn"
+              className="text-muted-foreground hover:text-foreground transition-colors p-1"
+              target="_blank"
               rel="noreferrer"
               aria-label="GitHub Profile"
             >
@@ -120,10 +118,10 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="https://linkedin.com/in/merhmn" 
-              className="text-muted-foreground hover:text-foreground transition-colors p-1" 
-              target="_blank" 
+            <a
+              href="https://linkedin.com/in/merhmn"
+              className="text-muted-foreground hover:text-foreground transition-colors p-1"
+              target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn Profile"
             >
@@ -131,8 +129,8 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="mailto:bfaridrahman@gmail.com" 
+            <a
+              href="mailto:bfaridrahman@gmail.com"
               className="text-muted-foreground hover:text-foreground transition-colors p-1"
               aria-label="Send Email"
             >
