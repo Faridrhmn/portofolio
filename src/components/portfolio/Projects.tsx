@@ -13,6 +13,7 @@ import {
 import mockupAksaralibrasi from '../../assets/mockup-aksaralibrasi.webp';
 import mockupWebBidan from '../../assets/mockup-web-bidan.webp';
 import mockupWebBouquet from '../../assets/mockup-web-bouquet.webp';
+import mockupConFess from '../../assets/mockup-con-fess.webp';
 import pacsFieldTesting from '../../assets/pacs.webp';
 
 interface InstagramPost {
@@ -32,6 +33,7 @@ interface ProjectItem {
   categoryTag: string;
   statusLabel: string;
   isFieldDoc?: boolean;
+  isFunProject?: boolean;
   description: string;
   image: string;
   imageCaption: string;
@@ -132,6 +134,34 @@ const projects: ProjectItem[] = [
       "Built an interactive web demo in Python (Flask) with an HTML5 canvas for real-time handwriting recognition."
     ],
     stack: ["Python", "Flask", "SVM", "FCC", "HTML/CSS", "JavaScript", "Bootstrap"]
+  },
+  {
+    title: "con/fess — Real-Time Anonymous Community Board",
+    categoryTag: "Social & Real-Time Web Platform",
+    statusLabel: "Live Production",
+    isFunProject: true,
+    description: "A lightweight, real-time anonymous message and confession board featuring multi-room channels, interactive polling, rich media sharing, and automated moderation for communities.",
+    image: mockupConFess,
+    imageCaption: "Production UI: Real-time public confession feed, community polls, custom room spaces, and admin moderation dashboard.",
+    link: "https://con-fess.faridrhmn.my.id/",
+    highlights: [
+      "Engineered real-time feed updates and room isolation using Flask-SocketIO (Eventlet) with seamless polling fallback.",
+      "Built community engagement features including interactive voting polls, emoji reactions, rich formatting, image uploads, and social card exports.",
+      "Implemented robust security and performance measures: IP rate limiting, SQLite WAL mode for concurrent access, and automated periodic database backups via APScheduler.",
+      "Configured self-hosted production deployment managed with Systemd service daemon, Gunicorn WSGI, and Nginx reverse proxy with static asset caching."
+    ],
+    stack: [
+      "Python",
+      "Flask",
+      "Flask-SocketIO",
+      "Eventlet",
+      "SQLite (WAL)",
+      "JavaScript (ES6+)",
+      "HTML5 / CSS3",
+      "Gunicorn",
+      "Nginx",
+      "Systemd"
+    ]
   }
 ];
 
@@ -140,6 +170,111 @@ const Projects = () => {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [copiedField, setCopiedField] = useState<'user' | 'pass' | null>(null);
+
+  const featuredProjects = projects.filter((p) => !p.isFunProject);
+  const funProjects = projects.filter((p) => p.isFunProject);
+
+  const renderProjectCard = (project: ProjectItem, index: number) => (
+    <motion.li
+      key={project.title}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="mb-12 transition-all"
+    >
+      <div
+        className="group relative flex flex-col gap-4 pb-4 transition-all lg:hover:!opacity-100 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-50/50 dark:lg:hover:bg-slate-800/30 lg:p-6 lg:rounded-xl cursor-pointer"
+        onClick={() => setSelectedProject(project)}
+      >
+        {/* Meta Header */}
+        <div className="flex items-center justify-between gap-2 text-xs">
+          <span className="font-mono text-muted-foreground">
+            {project.categoryTag}
+          </span>
+          <span className="inline-flex items-center gap-1.5 font-medium text-foreground/80">
+            <span
+              className={`w-1.5 h-1.5 rounded-full ${
+                project.isFieldDoc ? 'bg-amber-500' : 'bg-emerald-500'
+              }`}
+            />
+            {project.statusLabel}
+          </span>
+        </div>
+
+        {/* Media Showcase */}
+        {project.image && (
+          <div className="relative z-10 w-full overflow-hidden rounded-lg border border-border/60 bg-muted/20 shadow-sm">
+            <img
+              alt={project.title}
+              src={project.image}
+              loading="lazy"
+              className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+            />
+            {project.isFieldDoc && (
+              <div className="absolute top-2.5 left-2.5 inline-flex items-center gap-1.5 rounded-md bg-background/90 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm border border-border/50 shadow-sm">
+                <Camera className="w-3 h-3 text-amber-500" />
+                <span>Field Documentation</span>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Content */}
+        <div className="z-10 w-full">
+          <h3 className="font-semibold text-lg leading-snug text-foreground group-hover:text-primary transition-colors inline-flex items-center gap-1">
+            <span>{project.title}</span>
+            <ArrowUpRight className="w-4 h-4 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </h3>
+
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            {project.description}
+          </p>
+
+          {/* Demo Credentials Badge in Card */}
+          {project.demoCredentials && (
+            <div className="mt-3 inline-flex flex-wrap items-center gap-2 px-2.5 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-xs">
+              <KeyRound className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+              <span className="text-[11px] font-medium text-emerald-600 dark:text-emerald-400">Demo:</span>
+              <span className="font-mono text-[11px] bg-background/80 px-1.5 py-0.5 rounded border border-border/50 text-foreground/90">
+                user: <span className="font-semibold text-foreground">{project.demoCredentials.username}</span>
+              </span>
+              <span className="font-mono text-[11px] bg-background/80 px-1.5 py-0.5 rounded border border-border/50 text-foreground/90">
+                pass: <span className="font-semibold text-foreground">{project.demoCredentials.password}</span>
+              </span>
+            </div>
+          )}
+
+          {/* Highlights Bullet List */}
+          {project.highlights && project.highlights.length > 0 && (
+            <ul className="mt-3 space-y-1.5 text-xs text-foreground/85">
+              {project.highlights.slice(0, 2).map((highlight, hIdx) => (
+                <li key={hIdx} className="flex items-start gap-2">
+                  <span className="text-primary font-bold select-none">•</span>
+                  <span>{highlight}</span>
+                </li>
+              ))}
+              {project.highlights.length > 2 && (
+                <li className="text-[11px] text-primary font-medium pt-0.5 pl-3">
+                  + {project.highlights.length - 2} more technical implementations
+                </li>
+              )}
+            </ul>
+          )}
+
+          {/* Tech Stack */}
+          <ul className="mt-4 flex flex-wrap" aria-label="Technologies used">
+            {project.stack.map((tech) => (
+              <li key={tech} className="mr-1.5 mt-2">
+                <span className="inline-flex items-center rounded-md bg-muted/60 px-2.5 py-1 text-xs font-mono text-foreground/80 border border-border/40">
+                  {tech}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </motion.li>
+  );
 
   return (
     <section id="projects" className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" ref={ref}>
@@ -151,104 +286,26 @@ const Projects = () => {
 
       <div>
         <ul className="group/list">
-          {projects.map((project, index) => (
-            <motion.li
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="mb-12 transition-all"
-            >
-              <div
-                className="group relative flex flex-col gap-4 pb-4 transition-all lg:hover:!opacity-100 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-50/50 dark:lg:hover:bg-slate-800/30 lg:p-6 lg:rounded-xl cursor-pointer"
-                onClick={() => setSelectedProject(project)}
-              >
-                {/* Meta Header */}
-                <div className="flex items-center justify-between gap-2 text-xs">
-                  <span className="font-mono text-muted-foreground">
-                    {project.categoryTag}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 font-medium text-foreground/80">
-                    <span className={`w-1.5 h-1.5 rounded-full ${project.isFieldDoc ? 'bg-amber-500' : 'bg-emerald-500'}`} />
-                    {project.statusLabel}
-                  </span>
-                </div>
-
-                {/* Media Showcase */}
-                {project.image && (
-                  <div className="relative z-10 w-full overflow-hidden rounded-lg border border-border/60 bg-muted/20 shadow-sm">
-                    <img
-                      alt={project.title}
-                      src={project.image}
-                      loading="lazy"
-                      className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-[1.01]"
-                    />
-                    {project.isFieldDoc && (
-                      <div className="absolute top-2.5 left-2.5 inline-flex items-center gap-1.5 rounded-md bg-background/90 px-2.5 py-1 text-[11px] font-medium text-foreground backdrop-blur-sm border border-border/50 shadow-sm">
-                        <Camera className="w-3 h-3 text-amber-500" />
-                        <span>Field Documentation</span>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Content */}
-                <div className="z-10 w-full">
-                  <h3 className="font-semibold text-lg leading-snug text-foreground group-hover:text-primary transition-colors inline-flex items-center gap-1">
-                    <span>{project.title}</span>
-                    <ArrowUpRight className="w-4 h-4 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </h3>
-
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {project.description}
-                  </p>
-
-                  {/* Demo Credentials Badge in Card */}
-                  {project.demoCredentials && (
-                    <div className="mt-3 inline-flex flex-wrap items-center gap-2 px-2.5 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-xs">
-                      <KeyRound className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                      <span className="text-[11px] font-medium text-emerald-600 dark:text-emerald-400">Demo:</span>
-                      <span className="font-mono text-[11px] bg-background/80 px-1.5 py-0.5 rounded border border-border/50 text-foreground/90">
-                        user: <span className="font-semibold text-foreground">{project.demoCredentials.username}</span>
-                      </span>
-                      <span className="font-mono text-[11px] bg-background/80 px-1.5 py-0.5 rounded border border-border/50 text-foreground/90">
-                        pass: <span className="font-semibold text-foreground">{project.demoCredentials.password}</span>
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Highlights Bullet List */}
-                  {project.highlights && project.highlights.length > 0 && (
-                    <ul className="mt-3 space-y-1.5 text-xs text-foreground/85">
-                      {project.highlights.slice(0, 2).map((highlight, hIdx) => (
-                        <li key={hIdx} className="flex items-start gap-2">
-                          <span className="text-primary font-bold select-none">•</span>
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                      {project.highlights.length > 2 && (
-                        <li className="text-[11px] text-primary font-medium pt-0.5 pl-3">
-                          + {project.highlights.length - 2} more technical implementations
-                        </li>
-                      )}
-                    </ul>
-                  )}
-
-                  {/* Tech Stack */}
-                  <ul className="mt-4 flex flex-wrap" aria-label="Technologies used">
-                    {project.stack.map((tech) => (
-                      <li key={tech} className="mr-1.5 mt-2">
-                        <span className="inline-flex items-center rounded-md bg-muted/60 px-2.5 py-1 text-xs font-mono text-foreground/80 border border-border/40">
-                          {tech}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </motion.li>
-          ))}
+          {featuredProjects.map((project, index) => renderProjectCard(project, index))}
         </ul>
+
+        {funProjects.length > 0 && (
+          <div className="pt-2">
+            {/* Visual Separator */}
+            <div className="my-10 flex items-center gap-3">
+              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                Side & Fun Projects
+              </span>
+              <div className="h-[1px] flex-1 bg-border/60" />
+            </div>
+
+            <ul className="group/list">
+              {funProjects.map((project, index) =>
+                renderProjectCard(project, featuredProjects.length + index)
+              )}
+            </ul>
+          </div>
+        )}
       </div>
 
       {/* Project Detail Modal */}
@@ -270,7 +327,11 @@ const Projects = () => {
                     {selectedProject.categoryTag}
                   </span>
                   <span className="inline-flex items-center gap-1.5 font-medium text-foreground/80">
-                    <span className={`w-1.5 h-1.5 rounded-full ${selectedProject.isFieldDoc ? 'bg-amber-500' : 'bg-emerald-500'}`} />
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        selectedProject.isFieldDoc ? 'bg-amber-500' : 'bg-emerald-500'
+                      }`}
+                    />
                     {selectedProject.statusLabel}
                   </span>
                 </div>
@@ -305,6 +366,15 @@ const Projects = () => {
                 <div className="flex items-start gap-2.5 p-3 rounded-lg bg-muted/40 border border-border/50 text-xs text-muted-foreground leading-relaxed">
                   <ShieldCheck className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                   <p>{selectedProject.confidentialNotice}</p>
+                </div>
+              )}
+
+              {/* Fun Project Context Note */}
+              {selectedProject.isFunProject && (
+                <div className="p-3 rounded-lg bg-muted/30 border border-border/40 text-xs text-muted-foreground leading-relaxed">
+                  <p>
+                    <span className="font-medium text-foreground">Note:</span> Built as an internal office experiment and casual community space, featuring real-time room channels, anonymous polling, and self-hosted automation.
+                  </p>
                 </div>
               )}
 
