@@ -8,7 +8,7 @@ const skillCategories = [
     title: "Backend & Healthcare Protocols",
     skills: [
       "Scala 3", "Play Framework", "DICOM 3.0", "HL7", "dcm4che",
-      "CodeIgniter", "PHP", "Python", "C++", "RESTful APIs"
+      "Jaspersoft (JasperReports)", "CodeIgniter", "PHP", "Python", "C++", "RESTful APIs"
     ],
   },
   {

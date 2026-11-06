@@ -27,15 +27,16 @@ const experiences: ExperienceItem[] = [
     company: "PT. Farma Global Teknologi",
     period: "2024 — Present",
     type: "Full-Time",
-    description: "Developing enterprise healthcare software. Built an on-premise PACS middleware from scratch, maintained Hospital Information System (SIMRS) modules, and engineered digital document management services.",
+    description: "Developing enterprise healthcare software. Built an on-premise PACS middleware from scratch, maintained Hospital Information System (SIMRS) modules, and engineered digital document management (E-Doc) services with Jaspersoft & custom PHP PDF generation.",
     link: "#",
     details: [
       "Designed and developed a complete PACS middleware using Scala 3, Play Framework, and dcm4che for DICOM 3.0 image archiving and modality orchestration.",
+      "Engineered clinical document & report generation in E-Doc using Jaspersoft Studio / JasperReports, and developed an alternative PHP-based PDF engine to solve layout and customization constraints inherent in Jasper for bespoke hospital documents.",
       "Maintained and added features to the core web-based Hospital Information System (SIMRS) using CodeIgniter and MySQL.",
       "Built APIs and HL7 integration layers for medical data synchronization between electronic health records and radiology devices.",
       "Managed server deployments, database indexing, and application migration across on-premise hospital environments."
     ],
-    stack: ["Scala 3", "Play Framework", "Vue.js", "CodeIgniter", "PostgreSQL", "MySQL", "DICOM", "HL7", "Docker", "Linux"]
+    stack: ["Scala 3", "Play Framework", "Vue.js", "Jaspersoft", "JasperReports", "PHP", "CodeIgniter", "PostgreSQL", "MySQL", "DICOM", "HL7", "Docker", "Linux"]
   },
   {
     title: "Web Developer Intern",

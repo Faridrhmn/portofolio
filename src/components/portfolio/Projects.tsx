@@ -193,9 +193,8 @@ const Projects = () => {
           </span>
           <span className="inline-flex items-center gap-1.5 font-medium text-foreground/80">
             <span
-              className={`w-1.5 h-1.5 rounded-full ${
-                project.isFieldDoc ? 'bg-amber-500' : 'bg-emerald-500'
-              }`}
+              className={`w-1.5 h-1.5 rounded-full ${project.isFieldDoc ? 'bg-amber-500' : 'bg-emerald-500'
+                }`}
             />
             {project.statusLabel}
           </span>
@@ -328,9 +327,8 @@ const Projects = () => {
                   </span>
                   <span className="inline-flex items-center gap-1.5 font-medium text-foreground/80">
                     <span
-                      className={`w-1.5 h-1.5 rounded-full ${
-                        selectedProject.isFieldDoc ? 'bg-amber-500' : 'bg-emerald-500'
-                      }`}
+                      className={`w-1.5 h-1.5 rounded-full ${selectedProject.isFieldDoc ? 'bg-amber-500' : 'bg-emerald-500'
+                        }`}
                     />
                     {selectedProject.statusLabel}
                   </span>
@@ -414,11 +412,10 @@ const Projects = () => {
                           rel="noreferrer"
                           className="group/ig flex items-center gap-2.5 p-2.5 rounded-lg border border-border/40 bg-muted/20 hover:bg-pink-500/5 hover:border-pink-500/30 transition-all"
                         >
-                          <span className={`shrink-0 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold ${
-                            post.type === 'reel'
+                          <span className={`shrink-0 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold ${post.type === 'reel'
                               ? 'bg-purple-500/10 text-purple-500 border border-purple-500/20'
                               : 'bg-pink-500/10 text-pink-500 border border-pink-500/20'
-                          }`}>
+                            }`}>
                             {post.type === 'reel' ? '▶ Reel' : '◉ Post'}
                           </span>
                           <span className="flex-1 text-xs text-foreground/80 leading-snug group-hover/ig:text-foreground transition-colors">
